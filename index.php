@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steffany Queen Bigoy | Financial Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary-color: #0c6e43;
+            --primary-light: #10a564;
+            --primary-dark: #084b2c;
+            --accent-color: #26e899;
+            --secondary-color: #03251a;
+            --text-light: #e0f2e9;
+            --text-dark: #031d13;
+            --bg-light: #f0fff8;
+            --bg-dark: #021810;
+            --shadow: 0 10px 30px rgba(3, 37, 26, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            width: 100px;
+            height: 100px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--accent-color);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        section {
+            position: relative;
+            padding: 100px 0;
+            overflow: hidden;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-color);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: var(--secondary-color);
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.sticky {
+            background-color: rgba(2, 24, 16, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(12, 110, 67, 0.2), rgba(3, 37, 26, 0.95));
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/1080') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .animated-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(38, 232, 153, 0.1);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+        }
+        
+        .animated-bg span:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+        
+        .animated-bg span:nth-child(2) {
+            left: 10%;
+            width: 40px;
+            height: 40px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+        
+        .animated-bg span:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+        
+        .animated-bg span:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+        
+        .animated-bg span:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+        
+        .animated-bg span:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+        
+        .animated-bg span:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+        
+        .animated-bg span:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+        
+        .animated-bg span:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+        
+        .animated-bg span:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+        
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 30%;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .hero-title span {
+            display: block;
+            color: var(--accent-color);
+        }
+        
+        .hero-subtitle {
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            padding-left: 4px;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 40px;
+            padding-left: 4px;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        
+        .profile-container {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+        
+        .profile-img {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid rgba(38, 232, 153, 0.3);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: translateY(-20px);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            }
+            100% {
+                transform: translateY(0px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            }
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 48px;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-dark);
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-title {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+        }
+        
+        .about-subtitle {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .about-description {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #0a3426;
+        }
+        
+        .about-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 40px 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(10, 52, 38, 0.1);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        
+        .stat-number {
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-title {
+            font-size: 18px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        /* Expertise Section */
+        .expertise {
+            background-color: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .expertise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 10%, rgba(38, 232, 153, 0.05), transparent);
+        }
+        
+        .expertise .section-title h2 {
+            color: var(--text-light);
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .expertise-card {
+            background: rgba(3, 37, 26, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(38, 232, 153, 0.1);
+            border-radius: 15px;
+            padding: 40px 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(38, 232, 153, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+        
+        .expertise-icon {
+            margin-bottom: 20px;
+            font-size: 40px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(38, 232, 153, 0.1);
+            color: var(--accent-color);
+        }
+        
+        .expertise-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .expertise-list {
+            list-style: none;
+        }
+        
+        .expertise-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+        }
+        
+        .expertise-list li i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        /* Experience Section */
+        .experience {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            z-index: 0;
+            background: radial-gradient(circle at center, rgba(38, 232, 153, 0.03) 0%, transparent 70%);
+            transform: rotate(30deg);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), rgba(38, 232, 153, 0.3));
+            margin-left: -1px;
+        }
+        
+        .timeline-block {
+            position: relative;
+            margin-bottom: 100px;
+        }
+        
+        .timeline-block:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            width: 180px;
+            padding: 15px 20px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            text-align: center;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(12, 110, 67, 0.3);
+            z-index: 10;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 70px 40px 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-block:nth-child(odd) .timeline-content {
+            float: right;
+        }
+        
+        .timeline-block:nth-child(even) .timeline-content {
+            float: left;
+        }
+        
+        .timeline-block::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: rotate(45deg);
+        }
+        
+        .timeline-block:nth-child(odd) .timeline-content::before {
+            left: -10px;
+        }
+        
+        .timeline-block:nth-child(even) .timeline-content::before {
+            right: -10px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .timeline-content h4 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .timeline-content ul {
+            list-style: none;
+        }
+        
+        .timeline-content ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .timeline-content ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 15px;
+            margin-right: 5px;
+        }
+        
+        /* Skills & Certifications Section */
+        .skills-certs {
+            background-color: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skills-certs::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url('/api/placeholder/400/400') center/cover no-repeat;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .skills-certs .section-title h2 {
+            color: var(--text-light);
+        }
+        
+        .skills-certs-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .skills-container {
+            flex: 1;
+        }
+        
+        .skill-group {
+            margin-bottom: 60px;
+        }
+        
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .skill-group-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .skill-group-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 20px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+        
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .skill-name span {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+        
+        .skill-bar {
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+            position: relative;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        .certs-container {
+            flex: 1;
+        }
+        
+        .cert-card {
+            background: rgba(3, 37, 26, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(38, 232, 153, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(38, 232, 153, 0.3);
+        }
+        
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 3px;
+            background: linear-gradient(to left, var(--accent-color), transparent);
+        }
+        
+        .cert-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(38, 232, 153, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .cert-icon i {
+            font-size: 30px;
+            color: var(--accent-color);
+        }
+        
+        .cert-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .cert-description {
+            color: rgba(224, 242, 233, 0.7);
+            margin-bottom: 20px;
+        }
+        
+        .education-card {
+            background: rgba(3, 37, 26, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(38, 232, 153, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(38, 232, 153, 0.3);
+        }
+        
+        .education-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-color), transparent);
+        }
+        
+        .education-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(38, 232, 153, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .education-icon i {
+            font-size: 30px;
+            color: var(--accent-color);
+        }
+        
+        .education-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .education-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(224, 242, 233, 0.7);
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 90% 10%, rgba(12, 110, 67, 0.05), transparent);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            padding-right: 30px;
+        }
+        
+        .contact-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--primary-dark);
+        }
+        
+        .contact-description {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #0a3426;
+        }
+        
+        .contact-items {
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon i {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .contact-text {
+            color: #0a3426;
+        }
+        
+        .contact-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-text p {
+            font-size: 16px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(12, 110, 67, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(12, 110, 67, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(12, 110, 67, 0.2);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(12, 110, 67, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            padding: 80px 0 30px;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-text {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: rgba(224, 242, 233, 0.7);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(38, 232, 153, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(224, 242, 233, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-subscribe {
+            margin-bottom: 25px;
+        }
+        
+        .footer-subscribe p {
+            margin-bottom: 20px;
+            color: rgba(224, 242, 233, 0.7);
+        }
+        
+        .subscribe-form {
+            display: flex;
+        }
+        
+        .subscribe-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px 0 0 30px;
+            color: var(--text-light);
+        }
+        
+        .subscribe-input:focus {
+            outline: none;
+        }
+        
+        .subscribe-btn {
+            padding: 0 20px;
+            border: none;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .subscribe-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .copyright {
+            color: rgba(224, 242, 233, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media screen and (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .profile-container {
+                right: 5%;
+            }
+            
+            .profile-img {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .hero-title {
+                font-size: 60px;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .profile-container {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin: 50px auto 0;
+                text-align: center;
+            }
+            
+            .profile-img {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 50px;
+            }
+            
+            .about-stats {
+                width: 100%;
+            }
+            
+            .skills-certs-container {
+                flex-direction: column;
+                gap: 60px;
+            }
+            
+            .timeline::before {
+                left: 50px;
+            }
+            
+            .timeline-date {
+                left: 50px;
+                transform: translateX(-50%);
+                width: 140px;
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 90px);
+                float: right !important;
+                padding: 70px 30px 30px;
+            }
+            
+            .timeline-block:nth-child(even) .timeline-content::before,
+            .timeline-block:nth-child(odd) .timeline-content::before {
+                left: -10px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .contact-info {
+                padding-right: 0;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+            
+            .footer-column {
+                flex: 0 0 calc(50% - 40px);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 400px;
+                background: var(--secondary-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 50px 20px;
+                transition: var(--transition);
+                z-index: 1001;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                font-size: 18px;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+            
+            .about-title {
+                font-size: 30px;
+            }
+            
+            .timeline-content h3 {
+                font-size: 20px;
+            }
+            
+            .footer-column {
+                flex: 0 0 100%;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .profile-img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .stat-item {
+                padding: 30px 20px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo"><span>SQ Bigoy</span></a>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills-certs">Skills & Certs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="animated-bg">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Steffany Queen <span>Bigoy</span></h1>
+                <h2 class="hero-subtitle">Financial Architect & Tax Specialist</h2>
+                <p class="hero-description">A detail-oriented accounting professional with 10 years of experience transforming financial chaos into structured precision. Specializing in automation, system improvements, and tax optimization to help businesses thrive.</p>
+                <a href="#contact" class="btn">Let's Connect</a>
+            </div>
+            <div class="profile-container">
+                <img src="/api/placeholder/400/400" alt="Steffany Queen Bigoy" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="about-title">Crafting Financial Clarity</h3>
+                    <h4 class="about-subtitle">Transforming numbers into strategic insights</h4>
+                    <p class="about-description">Welcome to my professional portfolio. I am a dedicated accounting professional with a decade of experience across various aspects of financial management. My journey has equipped me with comprehensive knowledge in bookkeeping, tax preparation, and financial optimization.</p>
+                    <p class="about-description">I specialize in streamlining accounting processes through automation and system improvements, helping businesses maintain accurate financial records while increasing operational efficiency. My proactive approach to problem-solving and meticulous attention to detail ensures that clients receive the highest quality of service.</p>
+                    <p class="about-description">With experience working in diverse environments from local businesses to international e-commerce operations, I've developed a versatile skill set that allows me to adapt to various accounting challenges. I'm passionate about continued learning and staying updated with evolving financial practices.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-title">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-title">Clients Served</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-title">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-title">Countries Worked In</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise" id="expertise">
+        <div class="container">
+            <div class="section-title">
+                <h2>Core Expertise</h2>
+            </div>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="expertise-title">Bookkeeping Excellence</h3>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> Accounts receivable & payable</li>
+                        <li><i class="fas fa-check-circle"></i> General ledger maintenance</li>
+                        <li><i class="fas fa-check-circle"></i> Bank reconciliation (multi-currency)</li>
+                        <li><i class="fas fa-check-circle"></i> Financial record management</li>
+                        <li><i class="fas fa-check-circle"></i> Clean-up projects & system transitions</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="expertise-title">Tax Specialization</h3>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> Corporate tax return preparation</li>
+                        <li><i class="fas fa-check-circle"></i> Personal tax return preparation</li>
+                        <li><i class="fas fa-check-circle"></i> GST/HST return drafting</li>
+                        <li><i class="fas fa-check-circle"></i> International tax filing (Europe)</li>
+                        <li><i class="fas fa-check-circle"></i> Year-end tax preparation</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="expertise-title">Financial Reporting</h3>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> Financial statement preparation</li>
+                        <li><i class="fas fa-check-circle"></i> Compilation engagement (Notice To Reader)</li>
+                        <li><i class="fas fa-check-circle"></i> Management reporting</li>
+                        <li><i class="fas fa-check-circle"></i> Variance analysis</li>
+                        <li><i class="fas fa-check-circle"></i> Financial data accuracy verification</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="expertise-title">Software Proficiency</h3>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> Quickbooks Online & Desktop</li>
+                        <li><i class="fas fa-check-circle"></i> Xero & Wave Accounting</li>
+                        <li><i class="fas fa-check-circle"></i> Netsuite & Taxcycle</li>
+                        <li><i class="fas fa-check-circle"></i> Caseware Cloud/Desktop</li>
+                        <li><i class="fas fa-check-circle"></i> Dext, Hubdoc, TaxJar, Wagepoint</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="expertise-title">Team Management</h3>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> Team supervision & quality review</li>
+                        <li><i class="fas fa-check-circle"></i> Delegation & workload management</li>
+                        <li><i class="fas fa-check-circle"></i> Training & process implementation</li>
+                        <li><i class="fas fa-check-circle"></i> Client communication & coordination</li>
+                        <li><i class="fas fa-check-circle"></i> Cross-department collaboration</li>
+                    </ul>
+                </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="expertise-title">Process Optimization</h3>
+                    <ul class="expertise-list">
+                        <li><i class="fas fa-check-circle"></i> System implementation & migration</li>
+                        <li><i class="fas fa-check-circle"></i> Workflow automation</li>
+                        <li><i class="fas fa-check-circle"></i> Error reduction strategies</li>
+                        <li><i class="fas fa-check-circle"></i> Efficiency enhancement</li>
+                        <li><i class="fas fa-check-circle"></i> Documentation standardization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Journey</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-block">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>US Ecommerce Company</h3>
+                        <h4>Senior Financial Specialist</h4>
+                        <ul>
+                            <li>Managed accounts receivable and payable processes, ensuring timely payments and collections</li>
+                            <li>Provided critical support to Operations and Finance teams for strategic decision-making</li>
+                            <li>Conducted monthly bank reconciliations with precision and accuracy</li>
+                            <li>Maintained comprehensive financial records and documentation standards</li>
+                            <li>Prepared detailed financial statements for management review</li>
+                            <li>Led corporate year-end tax preparation and filing processes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-block">
+                    <div class="timeline-date">2019 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>Canadian Accounting Firm</h3>
+                        <h4>Junior Compiler & Senior Bookkeeper</h4>
+                        <ul>
+                            <li>Managed compilation engagements (Notice To Reader) for diverse clients</li>
+                            <li>Prepared and filed corporate and personal tax returns with high accuracy</li>
+                            <li>Verified and ensured completeness of financial information across client portfolios</li>
+                            <li>Handled client books across multiple platforms (Quickbooks, Xero, Wave)</li>
+                            <li>Processed payroll and led system clean-up projects to improve accuracy</li>
+                            <li>Reviewed quality of work from team members and provided mentorship</li>
+                            <li>Drafted GST/HST returns and performed reconciliations</li>
+                            <li>Created comprehensive financial reports for client business analysis</li>
+                            <li>Maintained client relationships through effective communication</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-block">
+                    <div class="timeline-date">2018 - 2019</div>
+                    <div class="timeline-content">
+                        <h3>Australian Ecommerce Company</h3>
+                        <h4>Accounting Virtual Assistant</h4>
+                        <ul>
+                            <li>Led the transition from legacy accounting software to QuickBooks Online</li>
+                            <li>Maintained up-to-date and accurate financial records</li>
+                            <li>Managed accounts payable and receivable processes</li>
+                            <li>Conducted inventory management across multiple Amazon marketplaces (UK, EU, US, DE, AU)</li>
+                            <li>Coordinated tax filings for European business operations</li>
+                            <li>Performed multi-currency bank reconciliations (USD, EURO, YEN, AUD)</li>
+                            <li>Maintained general ledger integrity and accuracy</li>
+                            <li>Prepared detailed financial reports for management decision-making</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-block">
+                    <div class="timeline-date">2014 - 2017</div>
+                    <div class="timeline-content">
+                        <h3>Philippines Local Company</h3>
+                        <h4>Accounting Clerk</h4>
+                        <ul>
+                            <li>Processed sales transactions and maintained sales records</li>
+                            <li>Conducted sales audits and managed stock shortage reports</li>
+                            <li>Provided support to the Accounts Payable department</li>
+                            <li>Organized and maintained filing systems for financial documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Certifications Section -->
+    <section class="skills-certs" id="skills-certs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Qualifications</h2>
+            </div>
+            <div class="skills-certs-container">
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">Core Competencies</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Attention to Detail</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Organization & Planning</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Problem Solving</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Multi-tasking</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Independent Work</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3 class="skill-group-title">Technical Skills</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Quickbooks</span>
+                                <span>98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Xero</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Netsuite</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>TaxCycle</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Microsoft Office</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="certs-container">
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3 class="cert-title">Quickbooks Certified ProAdvisor</h3>
+                        <p class="cert-description">Recognized expertise in Quickbooks accounting software, providing advanced support, training, and optimization for businesses using this platform.</p>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="cert-title">Certified Aero Guru</h3>
+                        <p class="cert-description">Specialized certification demonstrating proficiency in Aero accounting systems and processes for enhanced financial management.</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="education-title">BS Accounting Technology</h3>
+                        <div class="education-meta">
+                            <span>University of Mindanao, Tagum</span>
+                            <span>2014</span>
+                        </div>
+                        <p class="cert-description">Comprehensive education in accounting principles, financial management, taxation, and business technologies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Let's Connect</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">Get In Touch</h3>
+                    <p class="contact-description">I'm always interested in discussing new projects, creative ideas or opportunities to be part of your financial success story. Let's transform your accounting challenges into strategic advantages.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Available for remote work worldwide</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>steffany.bigoy@example.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo"><span>SQ Bigoy</span></div>
+                    <div class="footer-text">
+                        <p>I enjoy continually enhancing my skills to keep pace with evolving financial practices and software. Let me help you transform your financial management processes.</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#expertise"><i class="fas fa-chevron-right"></i> Expertise</a></li>
+                        <li><a href="#experience"><i class="fas fa-chevron-right"></i> Experience</a></li>
+                        <li><a href="#skills-certs"><i class="fas fa-chevron-right"></i> Skills & Qualifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Bookkeeping</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tax Preparation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Financial Reporting</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> System Implementation</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Process Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <div class="footer-subscribe">
+                        <p>Subscribe to receive updates on accounting best practices and tax tips.</p>
+                        <div class="subscribe-form">
+                            <input type="email" class="subscribe-input" placeholder="Your Email">
+                            <button class="subscribe-btn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2025 Steffany Queen Bigoy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loader-container');
+            loader.style.opacity = '0';
+            setTimeout(function() {
+                loader.style.display = 'none';
+            }, 500);
+        });
+        
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.overlay');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+        
+        // Animate skills on scroll
+        const skillsSection = document.querySelector('.skills-certs');
+        const progressBars = document.querySelectorAll('.skill-progress');
+        
+        function showProgress() {
+            const sectionPos = skillsSection.getBoundingClientRect().top;
+            const screenHeight = window.innerHeight;
+            
+            if(sectionPos < screenHeight * 0.75) {
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 300);
+                });
+                window.removeEventListener('scroll', showProgress);
+            }
+        }
+        
+        window.addEventListener('scroll', showProgress);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
